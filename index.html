@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#130d18">
+  <title>Our Little Date — Cinematic Edition 🌙</title>
+  <meta name="description" content="A cinematic food date planner with songs, snacks and a little surprise.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="petals" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand">♡ OUR LITTLE DATE <span class="brand-tag">CINEMATIC EDITION</span></div>
+    <div class="top-actions"><button class="ghost" id="nightBtn" type="button" aria-pressed="false">🌙 Night mode</button></div>
+  </header>
+
+  <main class="wrap">
+    <section class="card" id="screen-invite">
+      <div class="sparkle">✦ ✧ ✦</div>
+      <div class="eyebrow">A LITTLE SOMETHING FOR YOU</div>
+      <div class="big-heart" aria-hidden="true">♡</div>
+      <h1>Will you go on a food date with me?</h1>
+      <p class="sub">A little Tamil melody, your favourite food, and a memory waiting to happen. 🌹</p>
+      <div class="mini-perks"><span>♫ Tamil melodies</span><span>♡ Cute surprises</span><span>🍨 Food date</span></div>
+      <div class="buttons" id="buttonArea">
+        <button class="btn yes" id="yesBtn" type="button">YES ♥</button>
+        <button class="btn no" id="noBtn" type="button">NO 🙈</button>
+      </div>
+      <p class="tiny">Made with a little courage and a lot of feelings.</p>
+      <button class="text-button" id="noteBtn" type="button">💌 Open a tiny secret note</button>
+      <div class="secret-note hidden" id="secretNote">“No perfect plan needed. Good food, a song, and your company would be enough. 💗”</div>
+    </section>
+
+    <section class="card hidden" id="screen-plan">
+      <div class="eyebrow">STEP 1 · DATE DETAILS</div>
+      <h1>When are you free? 📅</h1>
+      <p class="sub">First, choose a day and time for our date.</p>
+
+      <label for="nickname">What should I call you? (optional)</label>
+      <input id="nickname" type="text" maxlength="40" placeholder="Your name or nickname">
+      <label for="date">Date</label>
+      <input id="date" type="date" required>
+      <label for="time">Time</label>
+      <input id="time" type="time" required>
+      <p class="field-hint">Pick any time that works for both of you. 💗</p>
+
+      <h2>Pick our date vibe ✨</h2>
+      <div class="vibe-grid" id="vibeGrid">
+        <button class="vibe selected" type="button" data-vibe="Cozy café ☕">☕<b>Cozy café</b><small>Slow talks</small></button>
+        <button class="vibe" type="button" data-vibe="Sunset walk 🌅">🌅<b>Sunset walk</b><small>Golden hour</small></button>
+        <button class="vibe" type="button" data-vibe="Movie + snacks 🎬">🎬<b>Movie + snacks</b><small>Chill together</small></button>
+        <button class="vibe" type="button" data-vibe="Food adventure 🍜">🍜<b>Food adventure</b><small>Try something new</small></button>
+      </div>
+      <button class="btn secondary full" id="surpriseBtn" type="button">🎲 Surprise me with an idea</button>
+      <p class="tiny" id="surpriseText">Tap for a cute, simple date idea.</p>
+
+      <button class="btn yes full" id="detailsContinueBtn" type="button">Choose dinner →</button>
+    </section>
+
+    <section class="card hidden" id="screen-dinner">
+      <div class="eyebrow">STEP 2 · DINNER</div>
+      <h1>What should we eat? 🍽️</h1>
+      <p class="sub">Choose as many dinner treats as you like.</p>
+      <div class="food-grid" id="foodGrid">
+        <button class="food selected" data-food="Chicken biryani" type="button" aria-pressed="true"><span>🍗</span><b>Chicken biryani</b></button>
+        <button class="food" data-food="Burger" type="button" aria-pressed="false"><span>🍔</span><b>Burger</b></button>
+        <button class="food" data-food="Ice cream" type="button" aria-pressed="false"><span>🍨</span><b>Ice cream</b></button>
+        <button class="food" data-food="Pizza" type="button" aria-pressed="false"><span>🍕</span><b>Pizza</b></button>
+        <button class="food" data-food="Shawarma" type="button" aria-pressed="false"><span>🌯</span><b>Shawarma</b></button>
+        <button class="food" data-food="Fried chicken" type="button" aria-pressed="false"><span>🍗</span><b>Fried chicken</b></button>
+        <button class="food" data-food="Parotta + salna" type="button" aria-pressed="false"><span>🫓</span><b>Parotta + salna</b></button>
+        <button class="food" data-food="Noodles" type="button" aria-pressed="false"><span>🍜</span><b>Noodles</b></button>
+        <button class="food" data-food="Dosa" type="button" aria-pressed="false"><span>🥞</span><b>Dosa</b></button>
+        <button class="food" data-food="Chocolate cake" type="button" aria-pressed="false"><span>🍰</span><b>Chocolate cake</b></button>
+        <button class="food" data-food="Milkshake" type="button" aria-pressed="false"><span>🥤</span><b>Milkshake</b></button>
+        <button class="food" data-food="French fries" type="button" aria-pressed="false"><span>🍟</span><b>French fries</b></button>
+      </div>
+      <label for="budget">Date budget (optional)</label>
+      <select id="budget">
+        <option value="Keep it simple">Keep it simple</option>
+        <option value="Under ₹500">Under ₹500</option>
+        <option value="₹500–₹1000">₹500–₹1000</option>
+        <option value="Let's decide together">Let's decide together 💗</option>
+      </select>
+      <label for="specialNote">A little special request (optional)</label>
+      <input id="specialNote" type="text" maxlength="100" placeholder="e.g. extra chocolate, less spicy...">
+
+      <label for="place">Optional place (optional)</label>
+      <input id="place" type="text" placeholder="e.g. our favourite café">
+      <div class="step-nav">
+        <button class="btn secondary" id="dinnerBackBtn" type="button">← Date and time</button>
+        <button class="btn yes" id="dinnerContinueBtn" type="button">Choose our songs →</button>
+      </div>
+    </section>
+
+    <section class="card hidden" id="screen-songs">
+      <div class="eyebrow">STEP 3 · SONGS</div>
+      <h1>Pick our songs 🎵</h1>
+      <p class="sub">Choose the melody for our little date.</p>
+      <div class="song-panel">
+        <div class="song-icon">♫</div>
+        <div class="song-copy">
+          <b>A little love-song moment</b>
+          <small>Opens the selected video on YouTube. If it is unavailable, search for another upload.</small>
+          <select id="songChoice" aria-label="Choose a love song">
+            <option value="A0BPkm95-dc" data-search="Kangal Irandal Subramaniapuram official song">Kangal Irandal — soft romance 💗</option>
+            <option value="rp3_FhRnIRw" data-search="Munbe Vaa Sillunu Oru Kaadhal official song">Munbe Vaa — dreamy 🌙</option>
+            <option value="ew1fKCWb_M4" data-search="Vaseegara Minnale official song">Vaseegara — classic love 🌹</option>
+            <option value="FzLpP8VBC6E" data-search="Nenjukkul Peidhidum Vaaranam Aayiram official song">Nenjukkul Peidhidum — feel-good ✨</option>
+            <option value="U3lyojCm6jA" data-search="Maruvaarthai Enai Noki Paayum Thota official song">Maruvaarthai — late-night mood 🌌</option>
+            <option value="Gep0IzKTcFI" data-search="Enna Solla Pogirai Kandukondain Kandukondain official song">Enna Solla Pogirai — sweet melody 💞</option>
+            <option value="wFn8Exk6I9I" data-search="Kanave Kanave David Tamil official song">Kanave Kanave — emotional 🎧</option>
+            <option value="11rbWfSMev0" data-search="Tamil love lofi playlist">Tamil love lofi playlist 🌙</option>
+          </select>
+        </div>
+        <a class="btn mini" id="songLink" href="https://www.youtube.com/results?search_query=Kangal+Irandal" target="_blank" rel="noopener">Play song ♫</a>
+        <a class="song-fallback" id="songSearchLink" href="https://www.youtube.com/results?search_query=Kangal+Irandal" target="_blank" rel="noopener">Search another version</a>
+      </div>
+      <div class="step-nav">
+        <button class="btn secondary" id="songsBackBtn" type="button">← Dinner</button>
+        <button class="btn yes" id="continueBtn" type="button">Continue to payment ♥</button>
+      </div>
+      <p class="tiny">YouTube provides playback. If a video is unavailable, use “Search another version.”</p>
+    </section>
+
+    <section class="card hidden" id="screen-payment">
+      <div class="gift">🎁</div>
+      <div class="eyebrow">ONE TINY JOKE</div>
+      <h1>The very serious Date Agreement™</h1>
+      <p class="sub">To confirm your date, please pay with one smile and absolutely no money.</p>
+      <div class="fake-receipt">
+        <div><b>Date Agreement™</b><strong>₹499</strong></div>
+        <small>ONE-TIME JOKE FEE · NO REAL PAYMENT</small>
+      </div>
+      <div class="notice">😂 This is a fake joke screen only. No payment gateway, UPI, card form, or charge is connected.</div>
+      <button class="btn yes full" id="confirmBtn" type="button">Pay ₹499 (JUST KIDDING) 💗</button>
+      <button class="text-button" id="backBtn" type="button">Go back</button>
+    </section>
+
+    <section class="card hidden" id="screen-done">
+      <div class="celebrate">💗 ✨ 🌹</div>
+      <div class="eyebrow">IT'S A DATE!</div>
+      <h1>You just made my day. 🥹</h1>
+      <p class="sub">Here's our little plan:</p>
+      <div class="countdown" id="countdown">Our countdown will appear here ✨</div>
+      <button class="btn secondary full" id="complimentBtn" type="button">💗 Give me a cute line</button>
+      <p class="compliment" id="complimentText" aria-live="polite"></p>
+      <div class="summary" id="summary"></div>
+
+      <section class="feature-suite" aria-labelledby="extrasTitle">
+        <div class="cinema-label">✦ AFTER THE YES ✦</div>
+        <h2 id="extrasTitle">Little things, just for us</h2>
+        <p class="field-hint">A few playful extras for your date night. Everything stays in this browser.</p>
+
+        <div class="feature-card">
+          <h3>💌 A letter from the heart</h3>
+          <label for="letterName">Their name (optional)</label><input id="letterName" maxlength="40" placeholder="Your favourite person">
+          <label for="letterMessage">Your message</label><textarea id="letterMessage" rows="3" maxlength="500" placeholder="There's something I wanted to tell you..."></textarea>
+          <button class="btn secondary full" id="openLetterBtn" type="button">Open the love letter ✨</button>
+          <div id="letterResult" class="letter-result hidden" aria-live="polite"></div>
+        </div>
+
+        <div class="feature-card">
+          <h3>💕 Tiny couple quiz</h3><p id="quizQuestion">Pick the perfect date mood:</p>
+          <div class="quiz-options" id="quizOptions">
+            <button type="button" data-answer="food">Food adventure 🍜</button><button type="button" data-answer="talk">Long talks 🌙</button><button type="button" data-answer="movie">Movie + snacks 🎬</button>
+          </div><p id="quizResult" class="feature-result" aria-live="polite"></p>
+        </div>ssss
+
+        <div class="feature-card">
+          <h3>🎡 Let fate pick our date</h3><div class="wheel" id="dateWheel" aria-live="polite">♡</div>
+          <button class="btn secondary full" id="spinBtn" type="button">Spin the date wheel</button><p id="wheelResult" class="feature-result" aria-live="polite">One spin, one cute idea.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🎁 One last surprise</h3><p>Tap the heart three times to unlock your message.</p>
+          <button class="unlock-heart" id="unlockBtn" type="button" aria-label="Tap three times to unlock surprise">♡</button><p id="unlockResult" class="letter-result hidden" aria-live="polite">No matter how the day goes, I hope it gives you a reason to smile. 💗</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>💗 A shareable invitation</h3><p>Make a little invitation from the plan you created.</p>
+          <div id="invitationPreview" class="invitation-preview">YOU'RE INVITED<br><span>to our little date</span> 🌙</div>
+          <button class="btn secondary full" id="makeInviteBtn" type="button">Create my invitation</button>
+          <button class="btn secondary full" id="downloadInviteBtn" type="button">Download invitation text</button>
+        </div>
+      </section>
+      <p class="notice" id="saveStatus">Your plan is saved only in this browser. No Firebase or online database is used.</p>
+      <button class="btn yes full" id="whatsappBtn" type="button">Share plan on WhatsApp 💬</button>
+      <button class="btn secondary full" id="copyBtn" type="button">Copy date plan</button>
+      <button class="text-button" id="restartBtn" type="button">Start again ↺</button>
+    </section>
+  </main>
+  <footer>Made with ♡ · <span>₹499 is only a joke. No real payment is collected.</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
